@@ -1,7 +1,10 @@
 :root {
-  --bs-font-sans-serif: 'Rubik', sans-serif;
+  --bs-font-sans-serif: 'Open Sans', sans-serif;
 }
-
+h1,h2,h3,h4,h5,h6{
+  color: black;
+  font-weight: bolder;
+}
 .container-xxl { max-width: 1530px; }
 
 a { color: var(--bs-dark); }
@@ -14,6 +17,8 @@ body{
   color: #212529;;
   background-color: #212529;;
 }
+ 
+
 
 .hero-image{
   height: 17rem;

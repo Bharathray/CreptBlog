@@ -9,14 +9,13 @@
   </nav>
 
 
-  
-    <!-- -->
-    <div  class="text-center mb-4">
-      <img src="/img/<%- article.image %>" style="top: 20px; bottom: 20px; height:35rem; width: 50rem;" alt="<%- article.name %>" loading="lazy">
-    </div>
+  <section class="px-4 py-5 my-5 text-center">
+    <img src="/img/<%- article.image %>" class="d-block mx-auto mb-4 img-fluid" alt="Publish your article for FREE today" width="566" height="208" loading="lazy">
+</section>
  
 
-    <div class="col-12 col-md-8 mt-4">
+
+
       <div class="row">
         <div class="col-12 pt-1"><h1><%- article.name %></h1></div>
         <div class="col-12 mb-4"><i class="bi bi-tag"></i> <%- article.category %></div> <!-- bi-> bootstrap icon-->
@@ -34,7 +33,7 @@
         </div>
         </div>
       </div>
-   
+    <!-- </div> -->
  
 <% } else { %>
   <p>No item found.</p>
