@@ -1,0 +1,202 @@
+<!-- Bootstrap’s grid system uses a series of containers, rows, and columns to layout and align content.Its built with flexbox -->
+<!-- The Flexbox Layout (Flexible Box)  aims at providing a more efficient way to lay out, align and distribute space among items in a container, even when their size is unknown and/or dynamic (thus the word “flex”). -->
+<!-- All number in Bootstrap are in rem except for grid breakpoints since viewport is in pixels -->
+<!-- p-> paddding , m->margin ,t- top ,b- bottom, l- left, r- right, x - both left and right, y- both top and bottom. -->
+<!-- g-> gutter. Gutters are the padding between your columns, used to responsively space and align content. -->
+ 
+<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4"><!-- py- padding vertical axis ,mb-margin bottom(If only p is given then all four sides are applied) -->
+  <!-- flex-row to set a horizontal direction (the browser default) Items start from left to right.If flex-row-reverse then items from right to left -->
+  
+  <div class="col-12 col-lg-6">
+    <!-- d-> display, img-fluid -> responsive image(so image scales with parent and based on viewport) -->
+    <img src="/img/hero-image.jpeg"  class="d-block mx-lg-auto img-fluid hero-image" loading="lazy" alt="Writing With Node.js"> <!-- Lazy->Defer(putoff) loading of images until some conditions are met. eg for (category route): Only when user is in category route ,the images in category are rendered.So,we can shorten the rendering in home page -->
+  </div>
+
+  <div class="col-12 col-lg-6">
+    <!-- fw->font weight -->
+    <h1 class="display-5 fw-bold mb-3">Huge selection of best articles</h1>
+    <p class="lead">
+      <!-- lead-> lead paragraph(stands out from rest of paragraph) (semantic importance.) -->
+      
+      Explore our huge selection of best articles including; webdev,appdev,marketing,..
+    </p>
+
+    <!-- use a d-grid if you trying to layout things using rows and columns -->
+    <!-- When using display: grid, you can make use of gap utilities on the parent grid container.This will add a responsive spacing(margin) on  individual items in grid. -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Explore Latest</a> <!--e->end. me-> for classes that set margin right in ltr fashion(left to right)-->
+      <a href="/explore-random" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Show Random</a>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Categories Start -->
+
+
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+<h2>Categories</h2>
+</div>
+
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+
+<!-- categories is all categories got from categories model -->
+  <% if(categories != '') { %>
+    <% categories.forEach(function(category, index) { %>
+      <a href="/categories/<%- category.name %>" class="col text-center category__link">  
+        <div class="category__img shadow">
+          <img src="img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%- category.name %></div>
+      </a>
+    <% }) %>
+  <% } %> 
+
+  <a href="/categories" class="col text-center category__link">
+    <div class="category__img shadow">
+      <img src="img/viewall.jpeg" alt="View All Categories" loading="lazy">
+    </div>
+    <div class="pt-1">View All</div>
+  </a>
+
+</div>
+</section>
+<!-- Categories End -->
+
+
+
+<!-- Latest Start -->
+
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Latest Articles</h2>
+    <a href="/explore-latest" class="ms-auto">View More</a> <!--ms -> Margin start-->
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+    <% if(blog != ''&&blog.latest!='') { %>
+      <% blog.latest.forEach(function(article, index){ %>
+      <a href="/article/<%= article._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/img/<%= article.image %>" alt="<%= article.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= article.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+
+</section>
+<!-- Latest End -->
+
+<!-- Marketing Start -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Marketing articles</h2>
+    <a href="/categories/Marketing" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(typeof blog.Marketing !== 'undefined' && blog.Marketing.length > 0) { %>
+      <% blog.Marketing.forEach(function(article, index){ %>
+      <a href="/article/<%= article._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/img/<%= article.image %>" alt="<%= article.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= article.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+<!-- Marketing End -->
+
+<!-- JEE Start -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>JEE articles</h2>
+    <a href="/categories/JEE" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(blog.JEE != '') { %>
+      <% blog.JEE.forEach(function(article, index){ %>
+      <a href="/article/<%= article._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/img/<%= article.image %>" alt="<%= article.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= article.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+<!-- JEE End -->
+
+<!-- WebDev articles -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>WebDev articles</h2>
+    <a href="/categories/WebDev" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(blog.WebDev != '') { %>
+      <% blog.WebDev.forEach(function(article, index){ %>
+      <a href="/article/<%= article._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/img/<%= article.image %>" alt="<%= article.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= article.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+<!-- WebDev End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Submit - Start -->
+<section class="px-4 py-5 my-5 text-center">
+  <img src="/img/submit.jpg" class="d-block mx-auto mb-4 img-fluid" alt="Publish your article for FREE today" width="566" height="208" loading="lazy">
+  <h1 class="display-5 fw-bold">Publish your article for FREE today</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">Publish your article in front of thousands of people for free.</p>
+    <p class="lead mb-4">Contact our company to publish your artucles</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="/contact" class="btn btn-primary btn-dark btn-lg">Contact us</a>
+    </div>
+  </div>
+</section>
+ 
+<!-- Submit - End -->
