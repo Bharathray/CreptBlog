@@ -3,8 +3,10 @@
 <!-- All number in Bootstrap are in rem except for grid breakpoints since viewport is in pixels -->
 <!-- p-> paddding , m->margin ,t- top ,b- bottom, l- left, r- right, x - both left and right, y- both top and bottom. -->
 <!-- g-> gutter. Gutters are the padding between your columns, used to responsively space and align content. -->
- 
-<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4"><!-- py- padding vertical axis ,mb-margin bottom(If only p is given then all four sides are applied) -->
+<!-- The Bootstrap grid system has four classes: xs (phones), sm (tablets), md (desktops), and lg (larger desktops). The classes can be combined to create more dynamic and flexible layouts.  -->
+
+<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4"><!-- This is row container.So,this encompasses columns and styles for columns-->
+  <!-- py- padding vertical axis ,mb-margin bottom(If only p is given then all four sides are applied) -->
   <!-- flex-row to set a horizontal direction (the browser default) Items start from left to right.If flex-row-reverse then items from right to left -->
   
   <div class="col-12 col-lg-6">
@@ -22,6 +24,9 @@
     </p>
 
     <!-- use a d-grid if you trying to layout things using rows and columns -->
+    <!-- The basic difference between CSS Grid Layout and CSS Flexbox Layout is that flexbox was designed for layout in one dimension - either a row or a column. Grid was designed for two-dimensional layout - rows, and columns at the same time. -->
+    <!-- With Flexbox, you can lay out and align elements in a container even if you don’t know the size of those elements or if the size might change. That’s because a flex container is flexible: it expands the flex elements to fill space when it’s available and shrinks them to prevent overflow when it’s not. -->
+    <!-- That means you can place components along the X- and Y-axis in CSS Grid and only one axis in Flexbox. -->
     <!-- When using display: grid, you can make use of gap utilities on the parent grid container.This will add a responsive spacing(margin) on  individual items in grid. -->
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
       <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Explore Latest</a> <!--e->end. me-> for classes that set margin right in ltr fashion(left to right)-->
@@ -47,7 +52,7 @@
   <% if(categories != '') { %>
     <% categories.forEach(function(category, index) { %>
       <a href="/categories/<%- category.name %>" class="col text-center category__link">  
-        <div class="category__img shadow">
+        <div class="category__img category__img--large shadow">
           <img src="img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
         </div>
         <div class="pt-1"><%- category.name %></div>
@@ -56,7 +61,7 @@
   <% } %> 
 
   <a href="/categories" class="col text-center category__link">
-    <div class="category__img shadow">
+    <div class="category__img category__img--large shadow">
       <img src="img/viewall.jpeg" alt="View All Categories" loading="lazy">
     </div>
     <div class="pt-1">View All</div>
@@ -166,24 +171,6 @@
   </div>
 </section>
 <!-- WebDev End -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- Submit - Start -->

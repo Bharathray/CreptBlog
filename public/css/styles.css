@@ -1,4 +1,4 @@
-:root {
+:root {  /* Pseudo class matching root element. define custom properties on the :root pseudo-class, so that it can be applied globally across your HTML document*/
   --bs-font-sans-serif: 'Open Sans', sans-serif;
 }
 h1,h2,h3,h4,h5,h6{
@@ -7,10 +7,10 @@ h1,h2,h3,h4,h5,h6{
 }
 .container-xxl { max-width: 1530px; }
 
-a { color: var(--bs-dark); }
+a { color: var(--bs-dark); } /*The var() function is used to insert the value of a CSS variable. Here , used to change color bootstrap anchor stying*/
 
 main{
-  min-height: calc(100vh - 40px);
+  min-height: calc(100vh - 40px); /*Make the main element size (full viewport-40px)*/
   
 }
 body{
@@ -18,7 +18,6 @@ body{
   background-color: #212529;;
 }
  
-
 
 .hero-image{
   height: 17rem;
@@ -30,11 +29,11 @@ body{
   text-align: center;
   display: block;
   text-decoration: none;
-  transition: 250ms all;
+  transition: 250ms all; /*Just defining property values here.Takes 250ms to transition fully*/
 }
 
 .category__link:hover {
-  transform: scale(1.1);
+  transform: scale(1.1);/*This is where scaling takes place*/
 }
 
 .category__img {
@@ -44,7 +43,7 @@ body{
   height: 100px;
   margin-bottom: 10px;
   box-shadow: 0px 3px 6px rgba(0,0,0,.16);
-  overflow: hidden;
+  overflow: hidden;/*The overflow property specifies what should happen if content overflows an element's box.The overflow is clipped, and the rest of the content will be invisible*/
   border-radius: 8px;
 }
 
@@ -55,5 +54,5 @@ body{
 .category__img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /*The CSS object-fit property is used to specify how an <img> or <video> should be resized to fit its container. Cover: The image keeps its aspect ratio and fills the given dimension. The image will be clipped to fit*/
 }

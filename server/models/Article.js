@@ -38,4 +38,12 @@ const articleSchema = new mongoose.Schema({
 articleSchema.index({ name: 'text', description: 'text' });  
 //We have a search bar.In it ,if we want to search then we don't want to search by id(Users don't type id!!).They type text.So, in mongodb also ,we need to search through the documents by text in name and description.If any matches,we can show it. 
 
+
+/*
+The mongoose.model() function of the mongoose module is used to create a collection of a particular database of MongoDB. 
+ 
+Syntax:
+mongoose.model(<Collectionname>, <CollectionSchema>)
+Return type: This function returns the Mongoose object.
+*/
 module.exports = mongoose.model('Article', articleSchema);

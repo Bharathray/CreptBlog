@@ -6,11 +6,12 @@ const Article = require('../models/Article');
  
 
 //To display the home page
-exports.homepage = async(req, res) => {
- 
-  try {
+/*Attach an anonymous function to exports object. The function expression is attached to homepage variable*/
+exports.homepage = async(req, res) => {  //To use Await keyword,we use async function
+                                        /*The await operator is used to wait for a Promise.The await expression causes async function execution to pause until a Promise is settled*/
+  try {                                 //Cause we can render the home page only after fetchind required data from database.So, we make the function to wait till data is fetched
     const limitNumber = 3;
-    const categories = await Category.find({}).limit(5);
+    const categories = await Category.find({}).limit(5); //Limit limits the number of categories fetched from databse 
     const latest = await Article.find({}).sort({_id: -1}).limit(limitNumber);  //Sort by id in the descending order.positive one represents the ascending order, while the negative one represents the descending order.
     const JEE = await Article.find({ 'category': 'JEE' }).limit(limitNumber);
     const WebDev = await Article.find({ 'category': 'WebDev' }).limit(limitNumber);
@@ -49,7 +50,7 @@ exports.exploreCategories = async(req, res) => {
   try {
     const limitNumber = 4;
     const categories = await Category.find({}).limit(limitNumber);
-    res.render('categories', { title: 'Writing Blog - Categories', categories } );
+    res.render('categories', { title: 'Explore Categories', categories } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -65,7 +66,7 @@ exports.exploreCategoriesById = async(req, res) => {
     let categoryId = req.params.id;
     const limitNumber = 20;
     const categoryById = await Article.find({ 'category': categoryId }).limit(limitNumber);
-    res.render('categories', { title: 'Writing Blog - Categories', categoryById } );
+    res.render('categories', { title: categoryId,categoryById } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -196,105 +197,4 @@ exports.submitArticleOnPost = async(req, res) => {
   }
 }
 
-
-
-
-// Delete Article
-// async function deleteArticle(){
-//   try {
-//     await Article.deleteOne({ name: 'New Article From Form' });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// deleteArticle();
-
-
-// Update Article
-// async function updateArticle(){
-//   try {
-//     const res = await Article.updateOne({ name: 'New Article' }, { name: 'New Article Updated' });
-//     res.n; // Number of documents matched
-//     res.nModified; // Number of documents modified
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// updateArticle();
-
-
-/**
- * Dummy Data Example 
-*/
-
-// async function insertDymmyCategoryData(){
-//   try {
-//     await Category.insertMany([
-//       {
-//         "name": "JEE",
-//         "image": "JEE-blog.jpg"
-//       },
-//       {
-//         "name": "webdev",
-//         "image": "webdev-blog.jpg"
-//       }, 
-//       {
-//         "name": "Marketing",
-//         "image": "Marketing-blog.jpg"
-//       },
-//       {
-//         "name": "Mexican",
-//         "image": "mexican-blog.jpg"
-//       }, 
-//       {
-//         "name": "Indian",
-//         "image": "indian-blog.jpg"
-//       },
-//       {
-//         "name": "Spanish",
-//         "image": "spanish-blog.jpg"
-//       }
-//     ]);
-//   } catch (error) {
-//     console.log('err', + error)
-//   }
-// }
-
-// insertDymmyCategoryData();
-
-
-// async function insertDymmyArticleData(){
-//   try {
-//     await Article.insertMany([
-//       { 
-//         "name": "Article Name Goes Here",
-//         "description": `Article Description Goes Here`,
-//         "email": "Articleemail@raddy.co.uk",
-//         "ingredients": [
-//           "1 level teaspoon baking powder",
-//           "1 level teaspoon cayenne pepper",
-//           "1 level teaspoon hot smoked paprika",
-//         ],
-//         "category": "webdev", 
-//         "image": "southern-friend-chicken.jpg"
-//       },
-//       { 
-//         "name": "Article Name Goes Here",
-//         "description": `Article Description Goes Here`,
-//         "email": "Articleemail@raddy.co.uk",
-//         "ingredients": [
-//           "1 level teaspoon baking powder",
-//           "1 level teaspoon cayenne pepper",
-//           "1 level teaspoon hot smoked paprika",
-//         ],
-//         "category": "webdev", 
-//         "image": "southern-friend-chicken.jpg"
-//       },
-//     ]);
-//   } catch (error) {
-//     console.log('err', + error)
-//   }
-// }
-
-// insertDymmyArticleData();
 

@@ -1,13 +1,16 @@
 <!-- This file is used for handling explore category page as well as the page displaying individual categories -->
-<h1 class="pb-4">Explore Categories</h1>
+<h1 class="pb-4"><%=title%></h1>
 
 <!-- Breadcrumbs-> Like item/item1/item2-->
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Home</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page"> <a href="/categories">Explore Categories</a></li>
-  </ol>
+    <li class="breadcrumb-item"> <a href="/categories">Explore Categories</a></li>
+    <% if(title!=='Explore Categories'){%>
+      <li class="breadcrumb-item active" aria-current="page"> <%=title%></li>
+      <%}%>
+    </ol>
+
 </nav>
 
 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">

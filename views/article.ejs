@@ -4,27 +4,32 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/categories/<%=article.category%>"><%=article.category%></a></li>
       <li class="breadcrumb-item active" aria-current="page"><%- article.name %></li>
     </ol>
   </nav>
 
+  <!-- Article name and category -->
+  <div class="row text-center px-4 py-5 my-5 ">
+    <div class="col-12 pt-1"><h1><%- article.name %></h1></div>
+    <div class="col-12 "><i class="bi bi-tag"></i> <%- article.category %></div> <!-- bi-> bootstrap icon-->
+   
+  </div>
 
-  <section class="px-4 py-5 my-5 text-center">
+  <!-- Image for the article -->
+  <section class="text-center">
     <img src="/img/<%- article.image %>" class="d-block mx-auto mb-4 img-fluid" alt="Publish your article for FREE today" width="566" height="208" loading="lazy">
-</section>
- 
+  </section>
 
+ <!-- Description for the article -->
+  <div class="row">
+    <div class="col-12" style="white-space: pre-line;">  <!-- White space:Tells how to wrap lines and collapse whitespace.   pre-wrap : Sequences of white space are preserved. Lines are broken at newline characters-->
+      <h4>Description</h4>
+      <%- article.description %>
+    </div>
+  </div>
 
-
-      <div class="row">
-        <div class="col-12 pt-1"><h1><%- article.name %></h1></div>
-        <div class="col-12 mb-4"><i class="bi bi-tag"></i> <%- article.category %></div> <!-- bi-> bootstrap icon-->
-        <div class="col-12" style="white-space: pre-line;">  <!-- White space:Tells how to wrap lines and collapse whitespace.   pre-wrap : Sequences of white space are preserved. Lines are broken at newline characters-->
-          <h4>Description</h4>
-          <%- article.description %>
-        </div>
-      </div>
-
+  <!-- Contents for the article -->
       <div class="row pt-4">
         <div class="col-12">
           <h4>Contents</h4>
